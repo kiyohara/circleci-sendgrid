@@ -24,10 +24,13 @@ jobs:
           root: .
           paths:
             - .
+            - .local
+            - .cache
 
   send_mail:
     docker:
       - image: circleci/python:3.7.2
+
     steps:
       - attach_workspace:
           at: .
