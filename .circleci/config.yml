@@ -44,6 +44,10 @@ jobs:
           command: pipenv --venv
 
       - run:
+          name: debug msg - ls -al ~/
+          command: ls -al ~/
+
+      - run:
           name: Send mail by send_mail.py
           command: pipenv run python send_mail.py
 
