@@ -13,7 +13,7 @@ git_tag   = os.environ.get('CIRCLE_TAG')
 sg = sendgrid.SendGridAPIClient(apikey=api_key)
 from_email = Email(from_addr)
 to_email = Email(to_addr)
-subject = "Sending with SendGrid is Fun " % git_tag
+subject = "Sending with SendGrid is Fun (%s)" % git_tag
 content = Content("text/plain", "and easy to do anywhere, even with Python")
 mail = Mail(from_email, subject, to_email, content)
 
