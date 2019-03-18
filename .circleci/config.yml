@@ -4,6 +4,8 @@ jobs:
     docker:
       - image: circleci/python:3.7.2
 
+    working_directory: ~/
+
     steps:
       - checkout
 
@@ -34,6 +36,8 @@ jobs:
   send_mail:
     docker:
       - image: circleci/python:3.7.2
+
+    working_directory: ~/
 
     steps:
       - attach_workspace:
