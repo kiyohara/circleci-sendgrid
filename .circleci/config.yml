@@ -2,15 +2,20 @@ version: 2
 jobs:
   build:
     docker:
-      - image: debian:stretch
+      - image: python:3.6
 
     steps:
       - checkout
 
       - run:
-          name: Greeting
-          command: echo Hello, world.
+          name: Install pipenv
+          command: pip install pipenv
 
       - run:
-          name: Print the Current Time
-          command: date
+          name: Install requirements libs
+          command: pipenv install
+
+      - run:
+          name: Send mail by send_mail.py
+          command: pipenv run python send_mail.py
+
