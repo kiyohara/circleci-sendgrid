@@ -23,6 +23,11 @@ jobs:
           paths:
             - ~/.local/share/virtualenvs
 
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+
   send_mail:
     docker:
       - image: python:3.6
