@@ -16,7 +16,7 @@ jobs:
 
       - run:
           name: Install requirements libs
-          command: pipenv install
+          command: pipenv sync
 
       - save_cache:
           key: pipenv-{{ .Branch  }}-{{ checksum "Pipfile.lock" }}
