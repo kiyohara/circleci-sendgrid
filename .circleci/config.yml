@@ -21,7 +21,8 @@ jobs:
       - save_cache:
           key: pipenv-{{ .Branch  }}-{{ checksum "Pipfile.lock" }}
           paths:
-            - ~/.local/share/virtualenvs
+            - ~/.local
+            - ~/.cache
 
       - persist_to_workspace:
           root: .
