@@ -60,3 +60,9 @@ workflows:
       - send_mail:
           requires:
             - build
+
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /.*/
