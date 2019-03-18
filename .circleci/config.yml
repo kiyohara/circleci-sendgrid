@@ -8,7 +8,7 @@ jobs:
       - checkout
 
       - restore_cache:
-        key: pipenv-{{ .Branch  }}-{{ checksum "Pipfile.lock" }}
+          key: pipenv-{{ .Branch  }}-{{ checksum "Pipfile.lock" }}
 
       - run:
           name: Install pipenv
@@ -19,9 +19,9 @@ jobs:
           command: pipenv install
 
       - save_cache:
-        key: pipenv-{{ .Branch  }}-{{ checksum "Pipfile.lock" }}
-        paths:
-          - ~/.local/share/virtualenvs
+          key: pipenv-{{ .Branch  }}-{{ checksum "Pipfile.lock" }}
+          paths:
+            - ~/.local/share/virtualenvs
 
       - run:
           name: confirm venv path
