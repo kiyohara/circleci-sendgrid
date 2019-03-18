@@ -1,0 +1,10 @@
+#CircleCI SendGrid integration test
+
+1. Create CircleCI project w/ below environment
+  * `SENDGRID_API_KEY`
+  * `SENDGRID_MAIL_FROM`
+  * `SENDGRID_MAIL_TO`
+
+2. Mark git tag, and push
+  * Note: *Only* tag (No any branch) is set as trigger.
+
