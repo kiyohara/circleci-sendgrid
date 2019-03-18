@@ -1,6 +1,9 @@
-import sendgrid
 import os
+
+import sendgrid
 from sendgrid.helpers.mail import *
+
+import base64
 
 api_key   = os.environ.get('SENDGRID_API_KEY')
 from_addr = os.environ.get('SENDGRID_MAIL_FROM')
@@ -12,6 +15,18 @@ to_email = Email(to_addr)
 subject = "Sending with SendGrid is Fun"
 content = Content("text/plain", "and easy to do anywhere, even with Python")
 mail = Mail(from_email, subject, to_email, content)
+
+# attached-file.txt handling
+with open("attached-file.txt", "rb") as f:
+  attached_base64 = base64.b64encode(f.read()).decode("ascii")
+
+attachment = Attachment()
+attachment.type = "text/plain"
+attachment.filename = "attached-file.txt"
+attachment.content = attached_base64
+attachment.disposition = "attachment"
+mail.add_attachment(attachment)
+
 response = sg.client.mail.send.post(request_body=mail.get())
 print(response.status_code)
 print(response.body)
