@@ -4,8 +4,6 @@ jobs:
     docker:
       - image: circleci/python:3.7.2
 
-    working_directory: ~/
-
     steps:
       - checkout
 
@@ -27,7 +25,7 @@ jobs:
           command: pipenv --venv
 
       - persist_to_workspace:
-          root: .
+          root: ~/
           paths:
             - .
             - .local
@@ -36,8 +34,6 @@ jobs:
   send_mail:
     docker:
       - image: circleci/python:3.7.2
-
-    working_directory: ~/
 
     steps:
       - attach_workspace:
