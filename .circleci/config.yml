@@ -2,17 +2,13 @@ version: 2
 jobs:
   build:
     docker:
-      - image: python:3.6
+      - image: python:3.7
 
     steps:
       - checkout
 
       - restore_cache:
           key: pipenv-{{ .Branch  }}-{{ checksum "Pipfile.lock" }}
-
-      - run:
-          name: Install pipenv
-          command: pip install pipenv
 
       - run:
           name: Install requirements libs
@@ -31,7 +27,7 @@ jobs:
 
   send_mail:
     docker:
-      - image: python:3.6
+      - image: python:3.7
     steps:
       - attach_workspace:
           at: .
