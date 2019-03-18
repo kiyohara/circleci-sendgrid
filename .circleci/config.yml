@@ -55,7 +55,12 @@ workflows:
   version: 2
   send_mail:
     jobs:
-      - build
+      - build:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /.*/
 
       - send_mail:
           requires:
