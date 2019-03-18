@@ -20,16 +20,10 @@ jobs:
             - ~/.local
             - ~/.cache
 
-      - run:
-          name: debug msg - pipenv --venv
-          command: pipenv --venv
-
       - persist_to_workspace:
           root: ~/
           paths:
             - .
-            - .local
-            - .cache
 
   send_mail:
     docker:
@@ -38,14 +32,6 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/
-
-      - run:
-          name: debug msg - ls -al ~/
-          command: ls -al ~/
-
-      - run:
-          name: debug msg - pipenv --venv
-          command: pipenv --venv
 
       - run:
           name: Send mail by send_mail.py
