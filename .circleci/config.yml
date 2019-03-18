@@ -27,7 +27,7 @@ jobs:
     docker:
       - image: python:3.6
     steps:
-      - attache_workspace:
+      - attach_workspace:
           at: .
 
       - run:
