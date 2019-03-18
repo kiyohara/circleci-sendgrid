@@ -23,7 +23,23 @@ jobs:
           paths:
             - ~/.local/share/virtualenvs
 
+  send_mail:
+    docker:
+      - image: python:3.6
+    steps:
+      - attache_workspace:
+          at: .
+
       - run:
           name: Send mail by send_mail.py
           command: pipenv run python send_mail.py
 
+workflows:
+  version: 2
+  send_mail:
+    jobs:
+      - build
+
+      - send_mail:
+          requires:
+            - build
